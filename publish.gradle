@@ -12,13 +12,13 @@ ext.configurePublishing = { packageName, packageDesc, packageVersion ->
     publishing {
         repositories {
             maven {
-                name = 'MavenCentral'
+                name = 'Rajce'
                 def releasesRepoUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
                 def snapshotsRepoUrl = 'https://oss.sonatype.org/content/repositories/snapshots'
                 url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
                 credentials {
-                    username = System.getenv('NEXUS_UPD_ID')
-                    password = System.getenv('NEXUS_UPD_PASS')
+                    username = System.getenv('REPOSILITE_USERNAME')
+                    password = System.getenv('REPOSILITE_PASSWORD')
                 }
             }
         }
