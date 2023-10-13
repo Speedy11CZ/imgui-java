@@ -186,20 +186,8 @@ jobs:
 
       - name: Publish
         env:
-          NEXUS_UPD_ID: ${{ secrets.RELEASE_NEXUS_UPD_ID }}
-          NEXUS_UPD_PASS: ${{ secrets.RELEASE_NEXUS_UPD_PASS }}
-          SIGNING_KEY_ID: ${{ secrets.RELEASE_SIGNING_KEY_ID }}
-          SIGNING_KEY: ${{ secrets.RELEASE_SIGNING_KEY }}
+          REPOSILITE_USERNAME: ${{ secrets.REPOSILITE_USERNAME }}
+          REPOSILITE_PASSWORD: ${{ secrets.REPOSILITE_PASSWORD }}
         run: |
           chmod +x ./buildSrc/scripts/publish.sh
           buildSrc/scripts/publish.sh
-
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          draft: true
-          prerelease: false
-          files: |
-            out/archives/**
